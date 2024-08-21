@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .add-customer {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .add-customer:hover {
+            background-color: #218838;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #fff;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer List</h1>
+    <ul>
+        {% for customer in customers %}
+        <li>
+            <a href="{% url 'customer_detail' customer.id %}">{{ customer.name }}</a>
+            <div>
+                <a class="edit-btn" href="{% url 'edit_customer' customer.id %}">Edit</a>
+                <a class="delete-btn" href="{% url 'delete_customer' customer.id %}">Delete</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a class="add-customer" href="{% url 'add_customer' %}">Add New Customer</a>
+</body>
+</html>

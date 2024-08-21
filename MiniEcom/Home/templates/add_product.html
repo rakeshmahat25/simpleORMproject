@@ -1,0 +1,15 @@
+<h1 style="font-family: Arial, sans-serif; color: #333;">Add New Product for {{ customer.name }}</h1>
+
+<form method="post" style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto;">
+    {% csrf_token %}
+    <div style="margin-bottom: 15px;">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+        Add Product
+    </button>
+</form>
+
+<a href="{% url 'customer_detail' customer.id %}" style="display: block; margin-top: 20px; text-align: center; color: #007BFF; text-decoration: none;">
+    Back to {{ customer.name }}'s Details
+</a>
